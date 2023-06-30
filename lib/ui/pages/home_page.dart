@@ -25,7 +25,7 @@ class HomePage extends StatelessWidget {
         create: (context) =>CharacterBloc(characterRepo: repository),
         child: Container(
             decoration: const BoxDecoration(color: Colors.black87),
-            child: const SearchPage()),
+            child:  const SearchPage()),
       ),
     );
   }
