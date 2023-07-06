@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rik_and_morty/bloc/character_bloc.dart';
+import 'package:rik_and_morty/ui/widgets/custom_list_title.dart';
 
 import '../../data/models/character.dart';
 
@@ -100,9 +101,7 @@ class _SearchPageState extends State<SearchPage> {
         shrinkWrap: true,
         itemBuilder: (context, index) {
           final result = currentResults[index];
-          return ListTile(
-          title: Text(result.name, style: const TextStyle(color: Colors.white),),
-          );
+          return CustomListTitle(result: result);
     },
     );
   }
