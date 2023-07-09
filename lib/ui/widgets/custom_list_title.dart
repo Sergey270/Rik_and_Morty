@@ -1,8 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:rik_and_morty/ui/widgets/characret_status.dart';
 
 import '../../data/models/character.dart';
-
 
 class CustomListTitle extends StatelessWidget {
   final Results result;
@@ -10,7 +10,7 @@ class CustomListTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  ClipRRect(
+    return ClipRRect(
       borderRadius: BorderRadius.circular(15),
       child: Container(
         height: MediaQuery.of(context).size.height / 7,
@@ -19,29 +19,45 @@ class CustomListTitle extends StatelessWidget {
           children: [
             CachedNetworkImage(
               imageUrl: result.image,
-              placeholder: (context, url) => const CircularProgressIndicator(color: Colors.cyan,),
-              errorWidget: (context, url, error)=> const Icon(Icons.error),
+              progressIndicatorBuilder: (context, url, downloadProgress) =>
+                  CircularProgressIndicator(value: downloadProgress.progress),
+              errorWidget: (context, url, error) => const Icon(Icons.error),
             ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SizedBox(
-                  width: MediaQuery.of(context).size.width / 1.9,
-                  child: Text(result.name, ),
-                ),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width / 1.9,
-                  child: Text(result.species, ),
-                ),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width / 1.9,
-                  child: Text(result.gender, ),
-                ),
-              ],
+            Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 1.9,
+                    child: Text(
+                      result.name,
+                    ),
+                  ),
+                  CharacterStatus(
+                    liveState: result.status == 'Alive'
+                        ? LiveState.alive
+                        : result.status == 'Dead'
+                            ? LiveState.dead
+                            : LiveState.unknown,
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 1.9,
+                    child: Text(
+                      result.species,
+                    ),
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 1.9,
+                    child: Text(
+                      result.gender,
+                    ),
+                  ),
+                ],
+              ),
             )
           ],
         ),
-        
       ),
     );
   }
