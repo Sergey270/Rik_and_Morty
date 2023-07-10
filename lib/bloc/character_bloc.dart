@@ -23,7 +23,7 @@ class CharacterBloc extends Bloc<CharacterEvent, CharacterState> with HydratedMi
 
       } catch(_){
         emit(const CharacterState.error());
-        rethrow;
+       // rethrow;
 
       }
 
@@ -32,14 +32,8 @@ class CharacterBloc extends Bloc<CharacterEvent, CharacterState> with HydratedMi
   }
 
   @override
-  CharacterState? fromJson(Map<String, dynamic> json) {
-    // TODO: implement fromJson
-    throw UnimplementedError();
-  }
+  CharacterState? fromJson(Map<String, dynamic> json) => CharacterState.fromJson(json);
 
   @override
-  Map<String, dynamic>? toJson(CharacterState state) {
-    // TODO: implement toJson
-    throw UnimplementedError();
-  }
+  Map<String, dynamic>? toJson(CharacterState state) => state.toJson();
 }
