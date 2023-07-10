@@ -3,6 +3,7 @@ import 'package:rik_and_morty/ui/pages/home_page.dart';
 
 void main() {
 
+
   runApp(const MyApp());
 }
 
