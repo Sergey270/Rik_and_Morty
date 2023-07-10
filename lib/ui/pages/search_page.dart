@@ -137,7 +137,10 @@ class _SearchPageState extends State<SearchPage> {
         shrinkWrap: true,
         itemBuilder: (context, index) {
           final result = currentResults[index];
-          return CustomListTitle(result: result);
+          return Padding(
+            padding: const EdgeInsets.only(right: 15, left: 15, top: 3, bottom: 3,),
+            child: CustomListTitle(result: result),
+          );
         },
       ),
     );

@@ -24,12 +24,13 @@ class CustomListTitle extends StatelessWidget {
               errorWidget: (context, url, error) => const Icon(Icons.error),
             ),
             Padding(
-              padding: const EdgeInsets.all(15.0),
+              padding: const EdgeInsets.all(12.0),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(
-                    width: MediaQuery.of(context).size.width / 1.9,
+                   // width: MediaQuery.of(context).size.width / 4,
                     child: Text(
                       result.name,
                     ),
@@ -42,13 +43,13 @@ class CustomListTitle extends StatelessWidget {
                             : LiveState.unknown,
                   ),
                   SizedBox(
-                    width: MediaQuery.of(context).size.width / 1.9,
+                 //   width: MediaQuery.of(context).size.width / 1.9,
                     child: Text(
                       result.species,
                     ),
                   ),
                   SizedBox(
-                    width: MediaQuery.of(context).size.width / 1.9,
+                 //   width: MediaQuery.of(context).size.width / 1.9,
                     child: Text(
                       result.gender,
                     ),
